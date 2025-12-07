@@ -18,13 +18,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Set up Gradle
+    - name: Setup Gradle 7.6.1
       uses: gradle/actions/setup-gradle@v3
       with:
-        cache-disabled: true  # 🔥 Disable caching to avoid GitHub errors
+        gradle-version: 7.6.1
+        cache-disabled: true
 
     - name: Build APK
-      run: gradle assembleDebug --no-daemon --stacktrace
+      run: gradle assembleDebug --no-daemon
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
