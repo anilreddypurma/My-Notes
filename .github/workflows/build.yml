@@ -20,9 +20,11 @@ jobs:
 
     - name: Set up Gradle
       uses: gradle/actions/setup-gradle@v3
+      with:
+        cache-disabled: true  # 🔥 Disable caching to avoid GitHub errors
 
     - name: Build APK
-      run: gradle assembleDebug --no-daemon
+      run: gradle assembleDebug --no-daemon --stacktrace
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
